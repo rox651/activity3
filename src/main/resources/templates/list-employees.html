@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Employees</title>
+   </head>
+   <body>
+      <tbody>
+         <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}">ID</td>
+            <td th:text="${employee.firstName}">First Name</td>
+            <td th:text="${employee.lastName}">Last Name</td>
+            <td th:text="${employee.email}">Email</td>
+            <td th:text="${employee.salary}">Salary</td>
+            <td th:text="${employee.department.name}">Department</td>
+            <td>
+               <a th:href="@{'/employees/' + ${employee.id}}">View</a>
+            </td>
+            <td>
+               <a th:href="@{'/employees/' + ${employee.id} + '/edit'}">Edit</a>
+            </td>
+            <td>
+               <a th:href="@{'/employees/' + ${employee.id} + '/delete'}">Delete</a>
+            </td>
+         </tr>
+      </tbody>
+   </body>
+</html>
