@@ -152,3 +152,30 @@ input[type="submit"]:hover {
    margin-top: -5px;
    margin-bottom: 10px;
 }
+
+/* error page */
+
+.error-container {
+   text-align: center;
+   margin-top: 50px;
+}
+
+.error-container h1 {
+   font-size: 3em;
+   color: #e74c3c;
+}
+
+.error-container p {
+   font-size: 1.5em;
+   color: #333;
+}
+
+.error-container a {
+   display: block;
+   margin-top: 20px;
+   background-color: #3498db;
+   color: white;
+   padding: 10px 15px;
+   text-decoration: none;
+   border-radius: 5px;
+}
