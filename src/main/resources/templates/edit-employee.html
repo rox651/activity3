@@ -4,6 +4,7 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title th:text="${employee != null ? 'Editar' : 'Employee Not Found'}">Employee</title>
+      <link th:href="@{/styles.css}" rel="stylesheet" />
    </head>
    <body>
       <h1 th:if="${employee != null}">Employee</h1>
@@ -12,17 +13,24 @@
       <div th:if="${employee != null}">
          <form th:action="@{/update-employee}" th:object="${employee}" method="post">
             <input type="hidden" th:field="*{id}" />
-            First name:<input type="text" th:field="*{firstName}" />
+            <label for="firstName">First name:</label>
 
-            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+            <input type="text" th:field="*{firstName}" />
+            <p class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
                First name error
             </p>
 
-            Last Name:<input type="text" th:field="*{lastName}" />
-            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</p>
+            <label for="lastName">Last name:</label>
+            <input type="text" th:field="*{lastName}" />
+            <p class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+               Last name error
+            </p>
 
-            Email:<input type="text" th:field="*{email}" />
-            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+            <label for="email">Email:</label>
+            <input type="text" th:field="*{email}" />
+            <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+               Email error
+            </p>
 
             <input type="submit" value="Submit" />
          </form>

@@ -4,26 +4,50 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Employees</title>
+      <link th:href="@{/styles.css}" rel="stylesheet" />
    </head>
    <body>
-      <h1>Employees</h1>
-      <a href="/add-employee">Add new employee</a>
-      <tbody>
-         <tr th:each="employee : ${employees}">
-            <td th:text="${employee.id}">ID</td>
-            <td th:text="${employee.firstName}">First Name</td>
-            <td th:text="${employee.lastName}">Last Name</td>
-            <td th:text="${employee.email}">Email</td>
-            <td>
-               <a th:href="@{'/employees/' + ${employee.id}}">View</a>
-            </td>
-            <td>
-               <a th:href="@{'/employees/' + ${employee.id} + '/edit'}">Edit</a>
-            </td>
-            <td>
-               <a th:href="@{'/employees/' + ${employee.id} + '/delete'}">Delete</a>
-            </td>
-         </tr>
-      </tbody>
+      <h1 class="title">Employees</h1>
+      <div class="container">
+         <a href="/add-employee" class="add-employee">Add new employee</a>
+         <table class="all-employees">
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th colspan="3">Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr th:each="employee : ${employees}">
+                  <td th:text="${employee.id}">ID</td>
+                  <td th:text="${employee.firstName}">First Name</td>
+                  <td th:text="${employee.lastName}">Last Name</td>
+                  <td th:text="${employee.email}">Email</td>
+                  <td>
+                     <a th:href="@{'/employees/' + ${employee.id}}" class="action-link view"
+                        >View</a
+                     >
+                  </td>
+                  <td>
+                     <a
+                        th:href="@{'/employees/' + ${employee.id} + '/edit'}"
+                        class="action-link edit"
+                        >Edit</a
+                     >
+                  </td>
+                  <td>
+                     <a
+                        th:href="@{'/employees/' + ${employee.id} + '/delete'}"
+                        class="action-link delete"
+                        >Delete</a
+                     >
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
    </body>
 </html>
