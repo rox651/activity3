@@ -57,7 +57,7 @@ Se añadió una página personalizada para manejar errores 404 y otros códigos 
 
 1. Clona este repositorio: git clone
 2. Configura tu base de datos en el archivo application.properties (Actualmente se esta usando h2.Driver).
-3. Ejecuta la aplicación usando el comando: `mvn spring-boot:run`.
+3. Ejecuta la aplicación usando el comando: `./mvn spring-boot:run`.
 4. Accede a la aplicación en el navegador: http://localhost:8080/.
 
 ## Pruebas
