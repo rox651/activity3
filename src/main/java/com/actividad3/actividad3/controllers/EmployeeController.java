@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.actividad3.actividad3.models.EmployeeEntity;
 import com.actividad3.actividad3.services.EmployeeService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping("/")
@@ -54,20 +58,34 @@ public class EmployeeController {
 
     @GetMapping("/add-employee")
     public String addEmployee(Model model) {
-        model.addAttribute("newEmployee", new EmployeeEntity(null, null, null));
+        model.addAttribute("newEmployee", new EmployeeEntity());
         return "add-employee";
     }
 
     @PostMapping("/create-employee")
-    public String createEmployee(@ModelAttribute EmployeeEntity newEmployee) {
+    public String createEmployee(@Valid @ModelAttribute("newEmployee") EmployeeEntity newEmployee,
+            BindingResult bindingResult,
+            Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("newEmployee", newEmployee);
+            return "add-employee";
+        }
+
         employeeService.createEmployee(newEmployee);
         return "redirect:/";
     }
 
-    @PostMapping("/update-employee/{id}")
-    public String updateEmployee(@PathVariable Long id,
-            @ModelAttribute EmployeeEntity employee) {
+    @PostMapping("/update-employee")
+    public String updateEmployee(
+            @Valid @ModelAttribute("employee") EmployeeEntity employee, BindingResult bindingResult, Model model) {
 
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("employee", employee);
+            return "edit-employee";
+        }
+
+        Long id = employee.getId();
         EmployeeEntity newEmployee = employeeService.getEmployeeById(id);
         newEmployee.setFirstName(employee.getFirstName());
         newEmployee.setLastName(employee.getLastName());
