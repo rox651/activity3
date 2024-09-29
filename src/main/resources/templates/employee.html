@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title th:text="${employee != null ? employee.firstName : 'Employee Not Found'}">
+         Employee
+      </title>
+   </head>
+   <body>
+      <h1>Employee</h1>
+
+      <h1 th:if="${employee != null}">Employee</h1>
+      <h1 th:unless="${employee != null}">Employee Not Found</h1>
+
+      <div th:if="${employee != null}">
+         <p>ID: <span th:text="${employee.id}">ID</span></p>
+         <p>First Name: <span th:text="${employee.firstName}">First Name</span></p>
+         <p>Last Name: <span th:text="${employee.lastName}">Last Name</span></p>
+         <p>Email: <span th:text="${employee.email}">Email</span></p>
+      </div>
+
+      <div th:unless="${employee != null}">
+         <p>The employee with the provided ID does not exist.</p>
+      </div>
+   </body>
+</html>

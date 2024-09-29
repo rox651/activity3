@@ -6,14 +6,14 @@
       <title>Employees</title>
    </head>
    <body>
+      <h1>Employees</h1>
+      <a href="/add-employee">Add new employee</a>
       <tbody>
          <tr th:each="employee : ${employees}">
             <td th:text="${employee.id}">ID</td>
             <td th:text="${employee.firstName}">First Name</td>
             <td th:text="${employee.lastName}">Last Name</td>
             <td th:text="${employee.email}">Email</td>
-            <td th:text="${employee.salary}">Salary</td>
-            <td th:text="${employee.department.name}">Department</td>
             <td>
                <a th:href="@{'/employees/' + ${employee.id}}">View</a>
             </td>

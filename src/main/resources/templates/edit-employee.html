@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title th:text="${employee != null ? 'Editar ${employee.firstName}' : 'Employee Not Found'}">
+         Employee
+      </title>
+   </head>
+   <body>
+      <h1>Employee</h1>
+
+      <h1 th:if="${employee != null}">Employee</h1>
+      <h1 th:unless="${employee != null}">Employee Not Found</h1>
+
+      <div th:if="${employee != null}">
+         <form
+            th:action="@{/update-employee/{id}(id=${employee.id})}"
+            th:object="${employee}"
+            method="post"
+         >
+            <input type="hidden" th:field="*{id}" />
+            First name:<input type="text" th:field="*{firstName}" /> Last Name:<input
+               type="text"
+               th:field="*{lastName}"
+            />
+            Email:<input type="text" th:field="*{email}" />
+            <input type="submit" value="Submit" />
+         </form>
+      </div>
+
+      <div th:unless="${employee != null}">
+         <p>The employee with the provided ID does not exist.</p>
+      </div>
+   </body>
+</html>
