@@ -10,7 +10,12 @@
       <h1 class="title">Employees</h1>
       <div class="container">
          <a href="/add-employee" class="add-employee">Add new employee</a>
-         <table class="all-employees">
+
+         <div th:if="${#lists.isEmpty(employees)}" class="no-employees">
+            <p class="not-found-employees">No employees found</p>
+         </div>
+
+         <table class="all-employees" th:unless="${#lists.isEmpty(employees)}">
             <thead>
                <tr>
                   <th>ID</th>

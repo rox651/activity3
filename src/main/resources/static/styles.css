@@ -87,6 +87,13 @@ body {
    background-color: #c0392b;
 }
 
+.not-found-employees {
+   text-align: center;
+   font-size: 1.2em;
+   color: #e74c3c;
+   margin-top: 20px;
+}
+
 /* employee  */
 
 .employee-details {
